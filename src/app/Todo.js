@@ -7,11 +7,16 @@ export class Todo extends Component {
       nums: [1, 2, 3]
     }
   }
+
+  handleClick(e) {
+    console.log('there')
+    this.setState()
+  }
   render() {
     return (
       <div>hello
 
-      <button>click </button>
+      <button onClick={this.handleClick.bind(this)}>click </button>
       </div>
     );
   }
