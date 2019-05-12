@@ -4,19 +4,23 @@ export class Todo extends Component {
   constructor() {
     super();
     this.state = {
-      nums: [1, 2, 3]
+      todos: [],
+      newTodo: ''
     }
   }
 
-  handleClick(e) {
-    console.log('there')
-    this.setState()
+  handleChange(e) {
+    const {value} = e.target;
+    this.setState({newTodo: value}); 
   }
+
   render() {
     return (
-      <div>hello
-
-      <button onClick={this.handleClick.bind(this)}>click </button>
+      <div>
+        <form>
+          <input onChange={this.handleChange.bind(this)} value={this.state.newTodo} type="text" placeholder="new todo"/>
+          <button>create</button>
+        </form>  
       </div>
     );
   }
