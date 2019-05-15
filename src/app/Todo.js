@@ -14,13 +14,25 @@ export class Todo extends Component {
     this.setState({newTodo: value}); 
   }
 
+  handleClick(e) {
+    e.preventDefault();
+    const todos = [...this.state.todos, this.state.newTodo];
+    this.setState({todos, newTodos:''});
+  }
+
   render() {
     return (
       <div>
+
         <form>
           <input onChange={this.handleChange.bind(this)} value={this.state.newTodo} type="text" placeholder="new todo"/>
-          <button>create</button>
-        </form>  
+          <button onClick={this.handleClick.bind(this)}>create</button>
+        </form> 
+
+        <ul>
+          {this.state.todos.map(todo => <li>{todo}</li>)}
+        </ul> 
+
       </div>
     );
   }
