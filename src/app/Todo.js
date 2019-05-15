@@ -20,6 +20,11 @@ export class Todo extends Component {
     this.setState({todos, newTodos:''});
   }
 
+  removeTodo(i) {
+    const todos = [...this.state.todos.slice(0, i), this.state.todos.slice(i+1)]
+    this.setState({todos})
+  }
+
   render() {
     return (
       <div>
@@ -30,7 +35,10 @@ export class Todo extends Component {
         </form> 
 
         <ul>
-          {this.state.todos.map(todo => <li>{todo}</li>)}
+          {this.state.todos.map((todo, i) => (
+          <li onClick={() => this.removeTodo.call(this, i)}>{todo}</li>
+          ))}
+          
         </ul> 
 
       </div>
